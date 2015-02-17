@@ -81,12 +81,12 @@ The [imread](http://www.mathworks.com/help/matlab/ref/imread.html) command is us
     
     What is the dimension of the output?
 
-    >   Answer
+    >   256x256
 
 3.  Read the ``4.2.03`` image
     What is the dimension of the output?
 
-    >   Answer
+    >  512x512x3
 
 ## Displaying Images
 
@@ -99,7 +99,7 @@ The following commands can be used for displaying images
 2.  Try displaying the images read in the previous point using both commands
 3.  What are the differences?
 
-    >   Answer
+    >   el primero muesta la matiz de la imagen  el segundo muestra la imagen de un aforma que la podemos persibir
 
 ## Writing Images
 
@@ -109,6 +109,11 @@ The [imwrite](http://www.mathworks.com/help/matlab/ref/imwrite.html) image is us
 2.  Write one of the images from before as png and as jpg
 3.  Write a matlab function that takes the path of an image and converts it to jpg
 
+function cambio(imagen)
+    a = imread(imagen,'TIFF');
+    nueva = strcat(imagen, '.jpg');
+    imwrite(a,nueva,'JPG');
+end
 ## Matlab and the shell
 
 ### Shell from Matlab
@@ -150,7 +155,7 @@ We can do this to simulate difficult capture conditions, and evaluate the algori
 2.  Try the diffente noise types, and save the noisy images to the repository (5 images)
 3.  Try saving noisy images as jpg, what happens?
 
-    > Answer
+    > la imagen pierde calidad por el formato de guardar 
 
 ### Median filter
 
@@ -164,7 +169,7 @@ These filters can be applied to a an image in order to remove noise.
 3.  Try different sizes for the filters
 4.  Which filter works best for salt & pepper noise?
 
-    > Answer
+    > el filtro mediano da la mejor representacion 
 
 For more on noise removal read http://www.mathworks.com/help/images/noise-removal.html
 
@@ -177,7 +182,7 @@ which can be otained from [fspecial](http://www.mathworks.com/help/images/ref/fs
 2.  Try different sizes for the filters
 3.  What differences do you notice?
 
-    > Answer
+    > las imagenes se suavisan  , se  observa mejor suavisado  con el filtro gausiano
 
 ### Sharpen
 
@@ -185,11 +190,11 @@ The [imsharpen](http://www.mathworks.com/help/images/ref/imsharpen.html) functio
 
 1.  Sharp the ``5.1.12`` image. What do you notice?
 
-    > Answer
+    > se resaltan los bordes
 
 2.  Sharp a blurred image. What do you notice?
 
-    > Answer
+    > se asemejo o es el mismo que el gausiano 
 
 ### Edge detection
 
@@ -204,7 +209,7 @@ Notice that the last two filters detect horizontal edges, in order to detect ver
 1.  Try applying this filters
 2.  What is the difference between prewitt and sobel?
 
-    > Answer
+    > con sobel es mas claro  y se  observan mejor los bordes
 
 More sophisticated methods for finding edges can be found in the following pages
     -   http://www.mathworks.com/discovery/edge-detection.html
@@ -259,11 +264,11 @@ The [impyramid](http://www.mathworks.com/help/images/ref/impyramid.html) functio
 2.  Create a four level pyramid from the ``5.1.12`` clock  image
 3.  At what level does the people in the picture dissappear?
 
-    >   Answer
+    >   tercer nivel 
     
 4.  At what level does the numbers in the clock disappear?
 
-    >   Answer
+    >   tercer nivel 
 
 ## Template Matching
 
@@ -303,13 +308,14 @@ The [norm2corrx](http://www.mathworks.com/help/images/ref/normxcorr2.htm) can be
     ```
 6.  Explain what the above code does
 
-    > Answer
+    > el codigo recibe la imagen realiza la correlacion 3 veces para eliminar bordes y acentuar la imagen 
+    deja la luminocidad original  de la imagen concatena el espacio  los comviente en rgb y lo muestra en rgb 
     
 7.  Now lets find the train in the next frame, read image ``motion05.512.tiff``.
 8.  Apply the procedure written above to it (use the train template from the past frame)
 9.  What are the limitations of this method?
 
-    > Answer
+    > se encuentran falsos en la imagen 
 
 See [here](http://www.mathworks.com/help/images/examples/registering-an-image-using-normalized-cross-correlation.html)
 another example.
